@@ -26,6 +26,15 @@ report 50100 Barcode
 
             }
 
+            trigger OnAfterGetRecord();
+            var
+                BarcodeSymbology: Enum "Barcode Symbology";
+                BarcodeFontProvider: Interface "Barcode Font Provider";
+                BarcodeString: Text;
+            begin
+
+            end;
+
         }
     }
     var
