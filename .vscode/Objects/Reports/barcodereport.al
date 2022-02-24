@@ -13,7 +13,7 @@ report 50101 BarcodeList
             {
 
             }
-            column(temp; temp.Blob)
+            column(temp; temp1.Blob)
             {
 
             }
@@ -27,6 +27,7 @@ report 50101 BarcodeList
     }
 
     var
-        temp: Record TempBlob temporary;
+        temp: Codeunit "Temp Blob";
+        temp1: Record TempBlob temporary;
         Barcode: Codeunit Barcode;
 }

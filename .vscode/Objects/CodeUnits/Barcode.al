@@ -1,6 +1,6 @@
 codeunit 50103 Barcode
 {
-    procedure DoGenerateBarcode(var Barcode: Code[100]; BarcodeType: Integer; var tempb: Record TempBlob temporary)
+    procedure DoGenerateBarcode(var Barcode: Code[100]; BarcodeType: Integer; var tempb: Codeunit "Temp Blob")
     begin
         Clear(tempb);
 
@@ -102,10 +102,10 @@ codeunit 50103 Barcode
         InStr: InStream;
         OutStr: OutStream;
     begin
-        tempblb.Blob.CreateInStream(InStr);
+        tempblb.CreateInStream(InStr, TextEncoding::UTF8);
         value.ReadAs(InStr);
 
-        tempblb.Blob.CreateOutStream(OutStr);
+        tempblb.CreateOutStream(OutStr, TextEncoding::UTF8);
         CopyStream(OutStr, InStr);
 
     end;
@@ -114,7 +114,7 @@ codeunit 50103 Barcode
         RequestURL: Text[250];
         RequestMethod: Option get,post,delete,patch,put;
         ResponseHeaders: HttpHeaders;
-        tempblb: Record TempBlob temporary;
+        tempblb: Codeunit "Temp Blob";
         BarcodeTypeValue: Text;
         Err000: Label 'Please take integer value between 0 to 5.';
 }
